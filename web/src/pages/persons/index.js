@@ -19,7 +19,11 @@ const Persons = React.createClass({
 	},
 	render() {
 		const listPerson = person =>
-			<li>{person.firstName + ' ' + person.lastName}</li>
+			<li key={person.id}>
+				<Link to={`persons/${person.id}/show`}> {/* template string format */}
+				{person.firstName + ' ' + person.lastName}
+				</Link>
+			</li>
 		return (
 			<div>
 				<h2>TODO: Persons List</h2>
