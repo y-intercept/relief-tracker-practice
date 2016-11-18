@@ -1,11 +1,17 @@
 const React = require('react')
+const { BrowserRouter, Match } = require('react-router')
 const Home = require('./pages/home')
 const About = require('./pages/about')
 
 const App = React.createClass({
 	render() {
 		return (
-			<h1>Hello World</h1>
+			<BrowserRouter>
+				<div>
+					<Match exactly pattern="/" component={Home} />
+					<Match exactly pattern="/about" component={About} />
+				</div>
+		 </BrowserRouter>
 		)
 	}
 })
