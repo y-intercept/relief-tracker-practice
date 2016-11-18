@@ -1,24 +1,6 @@
 {
   "persons": [
     {
-      "firstName": "Bob",
-      "lastName": "Marley",
-      "email": "",
-      "phone": "",
-      "success": false,
-      "id": "1"
-    },
-    {
-      "id": 3,
-      "firstName": "Elvis",
-      "lastName": "Presley"
-    },
-    {
-      "id": 4,
-      "firstName": "John",
-      "lastName": "Bonham"
-    },
-    {
       "id": 5,
       "firstName": "Peter",
       "lastName": "Tosh"
@@ -30,6 +12,14 @@
       "phone": "",
       "success": false,
       "id": 6
+    },
+    {
+      "firstName": "John",
+      "lastName": "Bonham",
+      "email": "",
+      "phone": "",
+      "success": false,
+      "id": 7
     }
   ],
   "efforts": [],

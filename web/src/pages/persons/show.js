@@ -10,22 +10,15 @@ const ShowPerson = React.createClass({
 		}
 	},
 	componentDidMount() {
-		if (this.props.params.id) {
-			xhr.get('http://localhost:4000/persons/' +
-				this.props.params.id, {
-					json: true
-				}, (err, res, person) => {
-					if (err) return console.log(err.message)
-					this.setState({person})
-				})
-		}
+		this.props.get(this.props.params.id, (err, person) => {
+			if (err) return console.log(err.message)
+			this.setState({person})
+		})
 	},
 	handleRemove(e) {
 		e.preventDefault
 		if (confirm('Are you sure?')) {
-			xhr.del('http://localhost:4000/persons/' + this.state.person.id, {
-				json: this.state.person
-			}, (err, res, body) => {
+			this.props.remove(this.props.params.id, this.props.person, (err, person) => {
 				if (err) return console.log(err.message)
 				this.setState({removed: true})
 			})
