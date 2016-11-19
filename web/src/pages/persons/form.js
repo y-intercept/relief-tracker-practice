@@ -9,6 +9,7 @@ const PersonForm = React.createClass({
 			firstName: '',
 			lastName: '',
 			email: '',
+			picture: '',
 			phone: '',
 			success: false
 		}
@@ -48,7 +49,7 @@ const PersonForm = React.createClass({
 	render() {
 		const formState = this.state.id ? 'Edit' : 'New'
 		return (
-			<div>
+			<div className="pa3">
 				{ this.state.success && this.state.id ?
 					<Redirect to={`/persons/${this.state.id}/show`} /> : null
 				}
@@ -56,7 +57,7 @@ const PersonForm = React.createClass({
 					<Redirect to={`/persons`} /> : null
 				}
 
-				<h3>{formState} Person Form</h3>
+				<h3>{formState}Person Form</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div>
 							<label style={labelStyle}>First Name</label>
@@ -77,9 +78,9 @@ const PersonForm = React.createClass({
 								type="email"/>
 						</div>
 						<div>
-							<label style={labelStyle}>Phone Number</label>
-							<input onChange={this.handleChange('phone')}
-								value={this.state.phone}
+							<label style={labelStyle}>Pic url</label>
+							<input onChange={this.handleChange('picture')}
+								value={this.state.picture}
 								type="text"/>
 						</div>
 						<button>Save</button>
