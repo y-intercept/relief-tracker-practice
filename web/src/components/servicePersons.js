@@ -2,7 +2,7 @@ const React = require('react')
 const xhr = require('xhr')
 const API_URL = process.env.REACT_APP_API
 
-const Service = Component => React.createClass({
+const ServicePersons = Component => React.createClass({
 	allDocs (callback) {
 		xhr.get(API_URL + '/persons', {json: true}, (err, res, body) => {
 			callback(err, body)
@@ -18,6 +18,7 @@ const Service = Component => React.createClass({
 			callback(err, body)
 		})
 	},
+
 	render () {
 		return (
 			<Component {...this.props}
@@ -31,4 +32,4 @@ const Service = Component => React.createClass({
 	}
 })
 
-module.exports = Service
+module.exports = ServicePersons

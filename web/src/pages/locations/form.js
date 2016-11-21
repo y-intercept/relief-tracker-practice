@@ -5,21 +5,19 @@ const labelStyle = {
   display: 'block'
 }
 
-const PersonForm = React.createClass({
+const LocationForm = React.createClass({
   getInitialState() {
     return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      picture: '',
-      phone: '',
+      name: '',
+      lat: '',
+      long: '',
       success: false
     }
   },
   handleSubmit(e) {
     e.preventDefault()
     if (this.state.id) {
-      xhr.put('http://localhost:4000/persons/	' + this.state.id, {
+      xhr.put('http://localhost:4000/locations/	' + this.state.id, {
         json: this.state
       }, (err, res, body) => {
         if (err)
@@ -27,7 +25,7 @@ const PersonForm = React.createClass({
         this.setState({success: true})
       })
     } else {
-      xhr.post('http://localhost:4000/persons', {
+      xhr.post('http://localhost:4000/locations', {
         json: this.state
       }, (err, res, body) => {
         if (err)
@@ -44,12 +42,12 @@ const PersonForm = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://localhost:4000/persons/' + this.props.params.id, {
+    xhr.get('http://localhost:4000/locations/' + this.props.params.id, {
       json: true
-    }, (err, res, person) => {
+    }, (err, res, location) => {
       if (err)
         return console.log(err.message)
-      this.setState(person)
+      this.setState(location)
     })
   },
   render() {
@@ -59,35 +57,30 @@ const PersonForm = React.createClass({
     return (
       <div className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center pa4">
         {this.state.success && this.state.id
-          ? <Redirect to={`/persons/${this.state.id}/show`}/>
+          ? <Redirect to={`/locations/${this.state.id}/show`}/>
           : null
 				}
         {this.state.success && !this.state.id
-          ? <Redirect to={`/persons`}/>
+          ? <Redirect to={`/locations`}/>
           : null
 				}
-        <h3>{formState}
-          Person Form</h3>
+        <h3>{formState} Location Form</h3>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label style={labelStyle}>First Name</label>
-            <input onChange={this.handleChange('firstName')} value={this.state.firstName} type="text"/>
+            <label style={labelStyle}>Name</label>
+            <input onChange={this.handleChange('firstName')} value={this.state.name} type="text"/>
           </div>
           <div>
-            <label style={labelStyle}>Last Name</label>
-            <input onChange={this.handleChange('lastName')} value={this.state.lastName} type="text"/>
+            <label style={labelStyle}>Latitude</label>
+            <input onChange={this.handleChange('lat')} value={this.state.lat} type="text"/>
           </div>
           <div>
-            <label style={labelStyle}>Email</label>
-            <input onChange={this.handleChange('email')} value={this.state.email} type="email"/>
-          </div>
-          <div>
-            <label style={labelStyle}>Pic url</label>
-            <input onChange={this.handleChange('picture')} value={this.state.picture} type="text"/>
+            <label style={labelStyle}>Longitude</label>
+            <input onChange={this.handleChange('long')} value={this.state.long} type="email"/>
           </div>
           <button className="link b near-black no-underline">Save</button>
           <button>
-            <Link to="/persons" className="link b near-black no-underline">Cancel</Link>
+            <Link to="/locations" className="link b near-black no-underline">Cancel</Link>
           </button>
           <button>
             <Link to="/" className="link b near-black no-underline">Home</Link>
@@ -98,4 +91,4 @@ const PersonForm = React.createClass({
   }
 })
 
-module.exports = PersonForm
+module.exports = LocationForm

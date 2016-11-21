@@ -28,11 +28,11 @@ const Persons = React.createClass({
 	      </div>
 	      <div className="dtc v-mid">
 	        <form className="w-100 tr">
-	          <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60" type="submit">
-							<Link to={`/persons/${person.id}/edit`}>Edit</Link>
+	          <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60 link" type="submit">
+							<Link to={`/persons/${person.id}/edit`} className="link b black no-underline">Edit</Link>
 						</button>
-						<button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60 ml1" type="submit">
-							<Link to={`/persons/${person.id}/show`}>Remove</Link>
+						<button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60 ml1 link" type="submit">
+							<Link to={`/persons/${person.id}/show`} className="link b black no-underline">Show</Link>
 						</button>
 	        </form>
 	      </div>
@@ -40,11 +40,13 @@ const Persons = React.createClass({
 
 		return (
 			<div>
-				<main className="mw6 center">
-					<ul>
+				<main className="mw6 center shadow-3 pa3 mv4 bg-washed-blue">
+					<h1 className="f3 tc pt1">The Team</h1>
+					<ul className="list pl0">
 						{this.state.persons.map(listPerson)}
 					</ul>
-					<Link to="/persons/new" className="ml4">Add New Person</Link>
+					<Link to="/persons/new" className="ml2 link b black underline-hover">Add New Person</Link>
+					<Link to="/" className="fr link b black underline-hover mr2">Return</Link>
 				</main>
 			</div>
 		)
